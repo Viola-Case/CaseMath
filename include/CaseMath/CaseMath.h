@@ -1,0 +1,12 @@
+/**
+
+    @file      CaseMath.h
+    @brief     Alright let's get started lol
+    @details   ~
+    @author    Viola Case
+    @date      8.12.2025
+    @copyright © Viola Case, 2025.
+
+**/
+#pragma once
+
