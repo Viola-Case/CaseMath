@@ -10,3 +10,4 @@
 **/
 #pragma once
 
+#include "cm_typetraits.h"
