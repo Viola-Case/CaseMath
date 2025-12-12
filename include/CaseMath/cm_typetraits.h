@@ -32,13 +32,13 @@ namespace CaseMath {
 		>;
 	
 	template<typename T>
-	concept Signed = std::is_signed_v<T> || std::is_signed_v<typename T::value_type>;
+	concept Signed = std::is_signed_v<T> || (Scalar<T> && std::is_signed_v<typename T::value_type>);
 
 	template<typename T>
-	concept FloatingPoint = std::is_floating_point_v<T> || std::is_floating_point_v<typename T::value_type>;
+	concept FloatingPoint = std::is_floating_point_v<T> || (Scalar<T> && std::is_floating_point_v<typename T::value_type>);
 
 	template<typename T>
-	concept Integral = std::is_integral_v<T> || std::is_integral_v<typename T::value_type>;
+	concept Integral = std::is_integral_v<T> || (Scalar<T> && std::is_integral_v<typename T::value_type>);
 
 
 	//
