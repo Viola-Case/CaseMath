@@ -12,7 +12,10 @@
 
 #include "cm_typetraits.h"
 #include "cm_complex.h"
+#include "cm_quaternion.h"
 #include "cm_vector.h"
 #include "cm_index.h"
 #include "cm_enum.h"
 #include "cm_matrix.h"
+#include "cm_tensor.h"
+#include "cm_fmt.h"

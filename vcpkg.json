@@ -2,6 +2,9 @@
   "name": "casemath",
   "version": "0.1",
   "homepage": "https://github.com/Viola-Case/CaseMath",
-  "license": "Terrace University License 1.0",
-  "description": "Math library for Viola Case's works"
-}
+  "license": null,
+  "description": "Math library for Viola Case's works",
+  "dependencies": [
+    "fmt"
+  ]
+ }

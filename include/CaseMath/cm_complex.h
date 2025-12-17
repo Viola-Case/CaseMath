@@ -18,13 +18,17 @@ namespace CaseMath {
 		requires std::is_signed_v<T> && (N > 0)
 	struct Vec;
 
+	template <StdScalar T>
+		requires std::is_signed_v<T>
+	struct Quat;
+
  /**
      @struct Comp
      @brief  Complex number, \f$a+b\mathrm{i}\f$
      @tparam T - t
  **/
-	template<typename T>
-		requires StdScalar<T> && std::is_signed_v<T>
+	template<StdScalar T>
+		requires std::is_signed_v<T>
 	struct Comp {
 		union {
 			struct { T Re, Im; };
@@ -122,11 +126,27 @@ namespace CaseMath {
 			return Comp{ Re, -Im };
 		}
 
-		constexpr Vec<T,2>() const noexcept {
+		constexpr operator Vec<T,2>() const noexcept {
 			return vec;
 		}
+
+		constexpr operator Quat<T>() const noexcept {
+			return { Re, Im, 0, 0 };
+		}
+
+
+		template<StdScalar U>
+			requires std::is_signed_v<U> && !(std::is_same_v<T, U>)
+		constexpr operator Comp() const noexcept {
+			return Comp<U>(static_cast<U>(Re), static_cast<U>(im));
+		}
+
+
 	};
 
+	constexpr Comp<long double> operator"" _i(long double v) noexcept {
+		return { 0.0l, v };
+	}
 
  /**
      @brief  Re[c]

@@ -129,7 +129,7 @@ namespace CaseMath {
 		constexpr Vec(Args&&... args)
 			: data{ static_cast<T>(std::forward<Args>(args))... } {}
 
-		constexpr Vec<T, 3> operator%(const Vec<T, 3>& rhs) const noexcept {
+		constexpr Vec operator%(const Vec& rhs) const noexcept {
 			return cross(rhs);
 		}
 
@@ -148,6 +148,8 @@ namespace CaseMath {
 		constexpr T operator*(const Vec<T, 3>& rhs) const noexcept {
 			return dot(rhs);
 		}
+
+		
 	};
 
 	template<typename T>

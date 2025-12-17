@@ -11,6 +11,8 @@
 #pragma once
 
 #include <cstdint>
+#include <utility>
+#include <array>
 #include "cm_typetraits.h"
 #include "cm_enum.h"
 
@@ -23,21 +25,25 @@ namespace CaseMath {
 	template <typename... Args> requires (std::is_convertible_v<Args, size_t> && ...)
 	constexpr Sign LeviCivita(Args... args) {
 		constexpr size_t N = sizeof...(Args);  //!< @TODO make sure this is not size-dependent
-		size_t arr[N] = { args... };
+		std::array<size_t, N> arr{ static_cast<size_t>(args)... };
 
-		size_t maxval = 0;
 		for (size_t i = 0; i < N; ++i) {
-			if (arr[i] > maxval) maxval = arr[i];
-		}
-		if (maxval != N - 1) return Sign::Zero;
-
-		int sign = 1;
-		for (size_t i = 0; i < N; ++i) {
-			for (size_t j = i + 1; j < N; ++j) {
-				if (arr[i] > arr[j]) sign = -sign;
+			if (arr[i] >= N) return Sign::Zero;
+			for (size_t j = i+1; j < N; ++j) {
+				if (arr[i] == arr[j])
+					return Sign::Zero;
 			}
 		}
 
-		return (sign == 1 ? Sign::Positive : Sign::Negative);
+		Sign sign = Sign::Positive;
+
+		for (size_t i = 0; i < N; ++i) {
+			for (size_t j = i+1; j < N; ++j) {
+				if (arr[i] > arr[j]) sign.flip();
+			}
+		}
+
+		return sign;
+		
 	}
 }

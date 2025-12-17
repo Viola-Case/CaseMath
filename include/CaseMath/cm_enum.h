@@ -18,6 +18,16 @@ namespace CaseMath {
 		constexpr Sign(Value v) : value(v) {}
 		constexpr Sign(float i) : value((i == 0 ? Value::Zero : (i > 0 ? Value::Positive : Value::Negative))) {}
 		constexpr operator int8_t() const noexcept { return static_cast<int8_t>(value); }
+		constexpr Sign& flip() noexcept { 
+			switch (value) {
+			case Positive: value = Negative; break;
+			case Negative: value = Positive; break;
+			default: break; }
+			return *this; 
+		}
+		constexpr Sign inverse() const noexcept {
+			return Sign(*this).flip();
+		}
 	};
 
 	constexpr Sign SignOf(float num) noexcept {
@@ -28,4 +38,6 @@ namespace CaseMath {
 	constexpr bool IsPositive(const Sign s, bool incZero = true) noexcept {
 		return (s == Sign::Positive) || (incZero && s == Sign::Zero);
 	}
+
+	constexpr Sign Inverse(Sign _s) { return _s.inverse(); }
 }
