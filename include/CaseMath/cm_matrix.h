@@ -72,7 +72,9 @@ namespace CaseMath {
 			return (result -= rhs);
 		}
 
-		constexpr T determinant() const noexcept {
+		constexpr T determinant() const noexcept 
+			requires (M == N)
+		{
 
 
 		}
@@ -137,5 +139,39 @@ namespace CaseMath {
 
 	};
 
-	
+	template<size_t M, size_t N>
+	using Mati = Mat<int, M, N>;
+
+	template<size_t M, size_t N>
+	using Matf = Mat<float, M, N>;
+
+	template<size_t M, size_t N>
+	using Matd = Mat<double, M, N>;
+
+
+	template<typename T, size_t N>
+	using SqMat = Mat<T, N, N>;
+
+	//!! These are all square matrices !!
+
+	template<typename T>
+	using Mat2 = SqMat<T, 2>;
+	using Mat2i = Mat2<int>;
+	using Mat2f = Mat2<float>;
+	using Mat2d = Mat2<double>;
+
+	template<typename T>
+	using Mat3 = SqMat<T, 3>;
+	using Mat3i = Mat3<int>;
+	using Mat3f = Mat3<float>;
+	using Mat3d = Mat3<double>;
+
+	template<typename T>
+	using Mat4 = SqMat<T, 4>;
+	using Mat4i = Mat4<int>;
+	using Mat4f = Mat4<float>;
+	using Mat4d = Mat4<double>;
+
+
+
 }
