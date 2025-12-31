@@ -9,11 +9,14 @@
 
 
 
-//#if __has_include(<fmt/core.h>)
+#if __has_include(<fmt/core.h>)
 
+
+#include <fmt/core.h>
+// insert formatting stuff here lol
 
 
 
 
 	
-//#endif // __has_include(<fmt>)
+#endif // __has_include(<fmt>)

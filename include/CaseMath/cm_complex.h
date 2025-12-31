@@ -41,7 +41,7 @@ namespace CaseMath {
 			Re(T{}), Im(T{}) {};
 		constexpr Comp(T re_, T im_) noexcept : 
 			Re(re_), Im(im_) {} ;
-		constexpr explicit Comp(T re_) noexcept : 
+		constexpr Comp(T re_) noexcept : 
 			Re(re_), Im(T{}) {};
 
 		// --- Compound operators ---
