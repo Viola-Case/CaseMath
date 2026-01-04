@@ -68,15 +68,17 @@ namespace CaseMath {
 
 	};
 
-
-	constexpr Quat<long double> operator"" _j(long double v) noexcept {
+	// @TODO Figure out how to make the literals work at all
+	/*constexpr Quat<long double> operator"" _j(long double v) noexcept {
 		return { 0, 0, v, 0 };
 	}
 	constexpr Quat<long double> operator"" _k(long double v) noexcept {
 		return { 0, 0, 0, v };
-	}
+	}*/
 
-	using Quati = Quat<int>;
-	using Quatf = Quat<float>;
-	using Quatd = Quat<double>;
+	using Quati 	=	Quat<int>;
+	using Quatl		=	Quat<long>;
+	using Quatll	=	Quat<long long>;
+	using Quatf 	=	Quat<float>;
+	using Quatd 	=	Quat<double>;
 }

@@ -144,13 +144,14 @@ namespace CaseMath {
 
 	};
 
-	constexpr Comp<long double> operator"" _i(long double v) noexcept {
+	// @TODO Figure out how to make the literals work nice
+	/*constexpr Comp<long double> operator"" _i(long double v) noexcept {
 		return { 0.0l, v };
 	}
 
 	constexpr Comp<long long> operator"" _i(unsigned long long v) noexcept {
 		return { 0l, v };
-	}
+	}*/
 
  /**
      @brief  Re[c]
@@ -168,13 +169,13 @@ namespace CaseMath {
 
 
 	template<typename T>
-		requires StdScalar<T> && std::is_signed_v<T>
+		//requires StdScalar<T> && std::is_signed_v<T>
 	constexpr Comp<T> operator+(T lhs, const Comp<T>& rhs) noexcept {
 		return Comp<T>{ lhs + rhs.Re, rhs.Im };
 	}
-
+	
 	template<typename T>
-		requires StdScalar<T> && std::is_signed_v<T>
+		//requires StdScalar<T> && std::is_signed_v<T>
 	constexpr Comp<T> operator-(T lhs, const Comp<T>& rhs) noexcept {
 		return Comp<T>{ lhs - rhs.Re, -rhs.Im };
 	}
