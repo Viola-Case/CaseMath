@@ -148,6 +148,10 @@ namespace CaseMath {
 		return { 0.0l, v };
 	}
 
+	constexpr Comp<long long> operator"" _i(unsigned long long v) noexcept {
+		return { 0l, v };
+	}
+
  /**
      @brief  Re[c]
  **/
