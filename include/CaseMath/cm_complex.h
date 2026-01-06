@@ -196,14 +196,16 @@ namespace CaseMath {
 		};
 	}
 
-	template<typename T>
-		requires StdScalar<T> && std::is_signed_v<T>
+	//! @TODO allow for unsigned stuff, maybe actually just cast it 
+
+	template<typename T, typename U>
+		//requires StdScalar<T> && std::is_signed_v<T>
 	constexpr Comp<T> operator+(const Comp<T>& lhs, T rhs) noexcept {
 		return Comp<T>{ lhs.Re + rhs, lhs.Im };
 	}
 
 	template<typename T>
-		requires StdScalar<T> && std::is_signed_v<T>
+		//requires StdScalar<T> && std::is_signed_v<T>
 	constexpr Comp<T> operator-(const Comp<T>& lhs, T rhs) noexcept {
 		return Comp<T>{ lhs.Re - rhs, lhs.Im };
 	}

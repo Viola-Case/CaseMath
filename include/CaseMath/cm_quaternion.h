@@ -76,6 +76,8 @@ namespace CaseMath {
 		return { 0, 0, 0, v };
 	}*/
 
+	// @TODO make implicit casting of usigned decltype
+
 	using Quati 	=	Quat<int>;
 	using Quatl		=	Quat<long>;
 	using Quatll	=	Quat<long long>;
